@@ -72,6 +72,14 @@
 
 <script>
   "use strict";
+  var myForm = document.getElementById("prevent-form-submission-form");
+  var myButton = document.getElementById("prevent-form-submission-button");
+
+  function alertSubmit(evt) {
+    evt.preventDefault()
+    alert("Alert!");
+  }
+  myForm.addEventListener('submit', alertSubmit)
   // code here for above problem
 </script>
 
