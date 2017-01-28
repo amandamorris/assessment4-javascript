@@ -153,10 +153,18 @@
        alt="Adorbz" id="kittenz-rule">
 </fieldset>
 
-
+<script src="https://code.jquery.com/jquery.js"></script>
 <script>
   "use strict";
   // put your code here
+  var dogUrl = "https://s-media-cache-ak0.pinimg.com/236x/78/2e/19/782e19a539df5566cc38984482b7fbf0.jpg";
+  var photo = $("#kittenz-rule");
+
+  function catToDog() {
+    photo.attr("src", dogUrl);
+  }
+  
+  photo.dblclick(catToDog);
 </script>
 
 <div class="hint">
