@@ -211,7 +211,7 @@
     evt.preventDefault();
     $("#play-guessing-game").prop('disabled', true);
     var randNum = Math.floor(Math.random() * 100);
-    console.log(randNum);
+    // console.log(randNum);
     $("#number-guessing-msg").html("I'm thinking of a number between 1 and 100.  Guess what it is!");
     $("#number-guessed").attr('disabled', false);
     $("#try-this-number").prop('disabled', false);
@@ -306,32 +306,19 @@
   }
 
   // put your code here
-  function myOtherFunction(result) {
-    console.log("AmandaAmanda");
-    console.log("result");
-  }
   function launchAttack(evt) {
+    evt.preventDefault();
     var formInputs = {
       "victim": $("#victim-name").val()
     }
-    console.log($("#victim-name"));
-    evt.preventDefault();
-    $.post("/t-rex-attack.json", 
-         formInputs,
-         myOtherFunction
-         );
 
-    console.log("attack");
+    $.post("/t-rex-attack.json",
+        formInputs,
+        showTRexResults
+        );
   }
-//   function showFortune(evt) {
-//     // TODO: get the fortune and show it in the #fortune-text div
-//     $.get('/fortune', function(results) {
-//         var fortune = results;
-//         $('#fortune-text').html(fortune);
-//     })
-// }
 
-  $("#victim-name").on("submit", launchAttack);
+  $("#Attack").on("click", launchAttack);
 </script>
 
 <div class="hint">
