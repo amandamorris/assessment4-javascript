@@ -163,7 +163,7 @@
   function catToDog() {
     photo.attr("src", dogUrl);
   }
-  
+
   photo.dblclick(catToDog);
 </script>
 
@@ -196,6 +196,51 @@
 <script>
   "use strict";
   // put your code here
+  // var numForm = $("#guessing-game-form");
+  
+  function evaluateGuess(evt) {
+    evt.preventDefault();
+    var guess = parseInt($("#number-guessed").val());
+    if (guess < randNum) {
+      $("#number-guessing-msg").html("Too low");
+    }
+    console.log(guess);
+
+  }
+  function guessingGame(evt) {
+    evt.preventDefault();
+    $("#play-guessing-game").prop('disabled', true);
+    var randNum = Math.floor(Math.random() * 100);
+    console.log(randNum);
+    $("#number-guessing-msg").html("I'm thinking of a number between 1 and 100.  Guess what it is!");
+    $("#number-guessed").attr('disabled', false);
+    $("#try-this-number").prop('disabled', false);
+
+    $("#try-this-number").on("click", function (evt) {
+      evt.preventDefault();
+      var guess = parseInt($("#number-guessed").val());
+      if (guess < randNum) {
+        $("#number-guessing-msg").html("Too low");
+    } else if (guess > randNum) {
+      $("#number-guessing-msg").html("Too high");
+    } else {
+      $("#number-guessing-msg").html("You guessed it!");
+      $("#try-this-number").prop('disabled', true);
+      $("#number-guessed").attr('disabled', true);
+      $("#play-guessing-game").prop('disabled', false);
+    }
+    });
+
+    // $.get('/assessment', function(results) {
+    //     // console.log(results);
+    // })
+  }
+    // if (0 <= parseInt(playerGuess) <=100) {
+    //   
+    // }
+  $("#play-guessing-game").on("click", guessingGame);
+  
+
 </script>
 
 
@@ -261,7 +306,32 @@
   }
 
   // put your code here
+  function myOtherFunction(result) {
+    console.log("AmandaAmanda");
+    console.log("result");
+  }
+  function launchAttack(evt) {
+    var formInputs = {
+      "victim": $("#victim-name").val()
+    }
+    console.log($("#victim-name"));
+    evt.preventDefault();
+    $.post("/t-rex-attack.json", 
+         formInputs,
+         myOtherFunction
+         );
 
+    console.log("attack");
+  }
+//   function showFortune(evt) {
+//     // TODO: get the fortune and show it in the #fortune-text div
+//     $.get('/fortune', function(results) {
+//         var fortune = results;
+//         $('#fortune-text').html(fortune);
+//     })
+// }
+
+  $("#victim-name").on("submit", launchAttack);
 </script>
 
 <div class="hint">
